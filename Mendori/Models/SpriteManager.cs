@@ -29,30 +29,16 @@ namespace Mendori.Models
             spriteBatch = new SpriteBatch(Game.GraphicsDevice);
 
             player = new UserControlledSprite(
+                Game.Content.Load<Texture2D>("Img/player1"),
+                new Vector2(Game.GraphicsDevice.PresentationParameters.BackBufferWidth/2, Game.GraphicsDevice.PresentationParameters.BackBufferHeight/10*9),
+                new Point(128, 128), 5,
+                new Point(0, 0), new Point(1, 1), new Vector2(6, 6));
+
+            spriteList.Add(new AutomatedSprite(
                 Game.Content.Load<Texture2D>("Img/threerings"),
-                Vector2.Zero, new Point(75, 75), 10,
-                new Point(0, 0), new Point(6, 8),
-                new Vector2(6, 6));
-
-            spriteList.Add(new AutomatedSprite(
-                Game.Content.Load<Texture2D>("Img/skullball"),
-                new Vector2(150, 150), new Point(75, 75), 10,
+                new Vector2(150, 150), 
+                new Point(75, 75), 10,
                 new Point(0, 0), new Point(6, 8), Vector2.Zero));
-
-            spriteList.Add(new AutomatedSprite(
-                Game.Content.Load<Texture2D>("Img/skullball"),
-                new Vector2(150, 300), new Point(75, 75), 10,
-                new Point(0, 0), new Point(6, 8), Vector2.Zero));
-
-            spriteList.Add(new AutomatedSprite(
-                Game.Content.Load<Texture2D>("Img/skullball"),
-                new Vector2(300, 150), new Point(75, 75), 10,
-                new Point(0, 0), new Point(6, 8), new Vector2(3, 1)));
-
-            spriteList.Add(new AutomatedSprite(
-                Game.Content.Load<Texture2D>("Img/skullball"),
-                new Vector2(600, 300), new Point(75, 75), 10,
-                new Point(0, 0), new Point(6, 8), Vector2.One));
 
             base.LoadContent();
         }
@@ -62,12 +48,12 @@ namespace Mendori.Models
             if (!gameOver)
             {
                 // Update player
-                player.Update(gameTime, Game.Window.ClientBounds);
+                player.Update(gameTime, Game.GraphicsDevice.PresentationParameters.Bounds);
 
                 // Update sprite list
                 foreach (Sprite s in spriteList)
                 {
-                    s.Update(gameTime, Game.Window.ClientBounds);
+                    s.Update(gameTime, Game.GraphicsDevice.PresentationParameters.Bounds);
 
                     // Check for collisions. Exit if found
                     if (s.collisionRect.Intersects(player.collisionRect))

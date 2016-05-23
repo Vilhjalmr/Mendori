@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Mendori.Models;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
@@ -12,10 +13,19 @@ namespace Mendori
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+        SpriteManager spriteManager;
+
+        Texture2D backgroundTexture;
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+
+            graphics.PreferredBackBufferWidth = 1366;
+            graphics.PreferredBackBufferHeight = 768;
+
+            IsMouseVisible = true;
         }
 
         /// <summary>
@@ -27,6 +37,8 @@ namespace Mendori
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+            spriteManager = new SpriteManager(this);
+            Components.Add(spriteManager);
 
             base.Initialize();
         }
@@ -41,6 +53,7 @@ namespace Mendori
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
+            backgroundTexture = Content.Load<Texture2D>("Img/background");
         }
 
         /// <summary>
@@ -63,6 +76,10 @@ namespace Mendori
                 Exit();
 
             // TODO: Add your update logic here
+            if (spriteManager.gameOver)
+            {
+                this.Exit();
+            }
 
             base.Update(gameTime);
         }
@@ -73,7 +90,14 @@ namespace Mendori
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.White);
+
+            spriteBatch.Begin();
+            spriteBatch.Draw(backgroundTexture,
+                new Rectangle(0, 0, Window.ClientBounds.Width, Window.ClientBounds.Height),
+                null, Color.White, 0, Vector2.Zero, SpriteEffects.None,
+                0);
+            spriteBatch.End();
 
             // TODO: Add your drawing code here
 

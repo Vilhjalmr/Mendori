@@ -11,14 +11,14 @@ namespace Mendori.Models
     internal abstract class Sprite
     {
         // FIELDS
-        Texture2D textureImage;
+        public Texture2D textureImage;
         protected Point frameSize;
-        Point currentFrame;
-        Point sheetSize;
-        int collisionOffset;
-        int timeSinceLastFrame = 0;
-        int millisecondsPerFrame;
-        const int defaultMillisecondsPerFrame = 16;
+        public Point currentFrame;
+        public Point sheetSize;
+        public int collisionOffset;
+        public int timeSinceLastFrame = 0;
+        public int millisecondsPerFrame;
+        public const int defaultMillisecondsPerFrame = 16;
         protected Vector2 speed;
         protected Vector2 position;
 
@@ -90,7 +90,7 @@ namespace Mendori.Models
             currentFrame.Y * frameSize.Y,
             frameSize.X, frameSize.Y),
             Color.White, 0, Vector2.Zero,
-            1f, SpriteEffects.None, 0);
+            0.5f, SpriteEffects.None, 0);
         }
     }
 }

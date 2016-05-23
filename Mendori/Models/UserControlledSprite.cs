@@ -54,13 +54,13 @@ namespace Mendori.Models
             // Move the sprite based on direction
             position += direction;
             // If player moved the mouse, move the sprite
-            MouseState currMouseState = Mouse.GetState();
-            if (currMouseState.X != prevMouseState.X ||
-            currMouseState.Y != prevMouseState.Y)
-            {
-                position = new Vector2(currMouseState.X, currMouseState.Y);
-            }
-            prevMouseState = currMouseState;
+                //MouseState currMouseState = Mouse.GetState();
+                //if (currMouseState.X != prevMouseState.X ||
+                //currMouseState.Y != prevMouseState.Y)
+                //{
+                //    position = new Vector2(currMouseState.X, currMouseState.Y);
+                //}
+                //prevMouseState = currMouseState;
             // If sprite is off the screen, move it back within the game window
             if (position.X < 0)
                 position.X = 0;
@@ -70,7 +70,12 @@ namespace Mendori.Models
                 position.X = clientBounds.Width - frameSize.X;
             if (position.Y > clientBounds.Height - frameSize.Y)
                 position.Y = clientBounds.Height - frameSize.Y;
+
+
+
             base.Update(gameTime, clientBounds);
         }
+
+        // ADD OWN DRAW METHOD TO RESIZE?
     }
 }
