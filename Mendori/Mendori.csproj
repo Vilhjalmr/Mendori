@@ -62,6 +62,17 @@
     <MonoGameContentReference Include="Content\Content.mgcb" />
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <None Include="Content\bin\Windows\Img\background.xnb" />
+    <None Include="Content\bin\Windows\Img\blueLaser.xnb" />
+    <None Include="Content\bin\Windows\Img\Explosion1.xnb" />
+    <None Include="Content\bin\Windows\Img\Explosion2.xnb" />
+    <None Include="Content\bin\Windows\Img\missile.xnb" />
+    <None Include="Content\bin\Windows\Img\player1.xnb" />
+    <None Include="Content\bin\Windows\Img\threerings.xnb" />
+    <None Include="Content\bin\Windows\plus.xnb" />
+    <None Include="Content\bin\Windows\SpriteFont\Score.xnb" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
