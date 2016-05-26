@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace Mendori.Models
 {
-//    class Spaceship : UserControlledSprite
-//    {
-//    }
+    //class Spaceship : UserControlledSprite
+    //{
+    //    public List<Weapon> Weapons = new List<Weapon>() { get; set; }
+
+
+    //}
 }

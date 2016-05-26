@@ -10,7 +10,7 @@ namespace Mendori.Models
 {
     internal abstract class Sprite
     {
-        // FIELDS
+        #region Fields
         public Texture2D textureImage;
         protected Point frameSize;
         public Point currentFrame;
@@ -21,9 +21,10 @@ namespace Mendori.Models
         public const int defaultMillisecondsPerFrame = 16;
         protected Vector2 speed;
         protected Vector2 position;
+        #endregion
 
 
-        // CONSTRUCTORS
+        #region Constructors
         public Sprite(Texture2D textureImage, Vector2 position, Point frameSize,
             int collisionOffset, Point currentFrame, Point sheetSize, Vector2 speed)
             : this(textureImage, position, frameSize, collisionOffset, currentFrame,
@@ -43,9 +44,10 @@ namespace Mendori.Models
             this.speed = speed;
             this.millisecondsPerFrame = millisecondsPerFrame;
         }
+        #endregion
 
 
-        // PROPERTIES
+        #region Properties
         public abstract Vector2 direction
         {
             get;
@@ -62,9 +64,10 @@ namespace Mendori.Models
                 frameSize.Y - (collisionOffset * 2));
             }
         }
+        #endregion
 
 
-        // GAME LOGIC
+        #region Methods
         public virtual void Update(GameTime gameTime, Rectangle clientBounds)
         {
             timeSinceLastFrame += gameTime.ElapsedGameTime.Milliseconds;
@@ -92,5 +95,6 @@ namespace Mendori.Models
             Color.White, 0, Vector2.Zero,
             0.5f, SpriteEffects.None, 0);
         }
+        #endregion
     }
 }

@@ -45,6 +45,7 @@
     <Compile Include="Models\UserControlledSprite.cs" />
     <Compile Include="Models\SpriteManager.cs" />
     <Compile Include="Models\Sprite.cs" />
+    <Compile Include="Models\Weapon.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

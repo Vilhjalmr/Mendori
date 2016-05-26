@@ -10,13 +10,13 @@ namespace Mendori.Models
 {
     public class SpriteManager : DrawableGameComponent
     {
-        public Boolean gameOver { get; private set; }
+        public bool gameOver { get; private set; }
 
         SpriteBatch spriteBatch;
         UserControlledSprite player;
         List<Sprite> spriteList = new List<Sprite>();
 
-        public SpriteManager(Microsoft.Xna.Framework.Game game) : base(game)
+        public SpriteManager(Game game) : base(game)
         { }
 
         public override void Initialize()
