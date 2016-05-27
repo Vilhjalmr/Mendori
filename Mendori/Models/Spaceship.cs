@@ -10,6 +10,27 @@ namespace Mendori.Models
     //{
     //    public List<Weapon> Weapons = new List<Weapon>() { get; set; }
 
-
+        #region Methods
+        
+        public void Update()
+        {
+            
+        }
+        
+        public void ShootLaser()
+        {
+            
+        }
+        
+        public void ShootMissile()
+        {
+            
+        }
+        
+        public void Switchpolarity()
+        {
+            
+        }
+        #endregion
     //}
 }
