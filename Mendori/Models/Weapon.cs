@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Mendori.Models
 {
-    internal class Weapon : Sprite
+    internal class Weapon : AutomatedSprite
     {
-        public int Power { get; set; }
+        public int Damage { get; set; }
 
         #region Constructors
         public Weapon(Texture2D textureImage, Vector2 position,
@@ -27,7 +27,6 @@ namespace Mendori.Models
                   currentFrame, sheetSize, speed, millisecondsPerFrame)
         { }
         #endregion
-
 
     }
 }
