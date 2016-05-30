@@ -42,6 +42,7 @@
     <Compile Include="Models\AutomatedSprite.cs" />
     <Compile Include="Models\HUD.cs" />
     <Compile Include="Models\LaserShot.cs" />
+    <Compile Include="Models\Polarity.cs" />
     <Compile Include="Models\Spaceship.cs" />
     <Compile Include="Models\UserControlledSprite.cs" />
     <Compile Include="Models\SpriteManager.cs" />

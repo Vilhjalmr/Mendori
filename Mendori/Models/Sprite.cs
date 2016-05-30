@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Mendori.Models
 {
-    internal abstract class Sprite
+    public abstract class Sprite
     {
         #region Fields
         public Texture2D textureImage;
@@ -93,7 +93,7 @@ namespace Mendori.Models
             currentFrame.Y * frameSize.Y,
             frameSize.X, frameSize.Y),
             Color.White, 0, Vector2.Zero,
-            0.5f, SpriteEffects.None, 0);
+            1f, SpriteEffects.None, 0);
         }
         #endregion
     }

@@ -8,18 +8,25 @@ using System.Threading.Tasks;
 
 namespace Mendori.Models
 {
-    internal class LaserShot : Weapon
+    public class LaserShot : Weapon
     {
-        public LaserShot() : base()
-        {
+        // TODO: add polarity logic to laser
 
-        }
+        public LaserShot(Texture2D textureImage, Vector2 position,
+            Point frameSize, int collisionOffset, Point currentFrame,
+            Point sheetSize, Vector2 speed)
+            : base(textureImage, position, frameSize, collisionOffset,
+                  currentFrame, sheetSize, speed)
+        { }
+      
 
-        public override void Move()
+       
+
+        public override void Update(GameTime gameTime, Rectangle clientBounds)
         {
-            if (this.posY > 0 - Texture.Bounds.Height)
+            if (this.position.Y > 0 - textureImage.Bounds.Height)
             {
-                this.posY -= 15;
+                this.position -= speed;
             }
             else
             {
@@ -27,9 +34,6 @@ namespace Mendori.Models
             }
         }
 
-        public override void Update()
-        {
-            Move();
-        }
+        
     }
 }

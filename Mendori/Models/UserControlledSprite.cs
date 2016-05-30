@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Mendori.Models
 {
-    internal class UserControlledSprite : Sprite
+    public class UserControlledSprite : Sprite
     {
         MouseState prevMouseState;
 
@@ -71,6 +71,7 @@ namespace Mendori.Models
             if (position.Y > clientBounds.Height - frameSize.Y)
                 position.Y = clientBounds.Height - frameSize.Y;
 
+            
 
 
             base.Update(gameTime, clientBounds);

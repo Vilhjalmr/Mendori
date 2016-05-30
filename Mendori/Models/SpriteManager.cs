@@ -14,6 +14,7 @@ namespace Mendori.Models
 
         SpriteBatch spriteBatch;
         UserControlledSprite player;
+        Spaceship pj;
         List<Sprite> spriteList = new List<Sprite>();
 
         public SpriteManager(Game game) : base(game)
@@ -28,11 +29,20 @@ namespace Mendori.Models
         {
             spriteBatch = new SpriteBatch(Game.GraphicsDevice);
 
-            player = new UserControlledSprite(
+            //player = new UserControlledSprite(
+            //    Game.Content.Load<Texture2D>("Img/player1"),
+            //    new Vector2(Game.GraphicsDevice.PresentationParameters.BackBufferWidth/2, Game.GraphicsDevice.PresentationParameters.BackBufferHeight/10*9),
+            //    new Point(128, 128), 5,
+            //    new Point(0, 0), new Point(1, 1), new Vector2(6, 6));
+
+            pj = new Spaceship(
                 Game.Content.Load<Texture2D>("Img/player1"),
-                new Vector2(Game.GraphicsDevice.PresentationParameters.BackBufferWidth/2, Game.GraphicsDevice.PresentationParameters.BackBufferHeight/10*9),
+                new Vector2(Game.GraphicsDevice.PresentationParameters.BackBufferWidth / 2, Game.GraphicsDevice.PresentationParameters.BackBufferHeight / 10 *9),
                 new Point(128, 128), 5,
-                new Point(0, 0), new Point(1, 1), new Vector2(6, 6));
+                new Point(0, 0), new Point(1, 1), new Vector2(6, 6),
+                Polarity.White,
+                Game.Content.Load<Texture2D>("Img/blueLaser")
+                );
 
             spriteList.Add(new AutomatedSprite(
                 Game.Content.Load<Texture2D>("Img/threerings"),
@@ -48,7 +58,7 @@ namespace Mendori.Models
             if (!gameOver)
             {
                 // Update player
-                player.Update(gameTime, Game.GraphicsDevice.PresentationParameters.Bounds);
+                pj.Update(gameTime, Game.GraphicsDevice.PresentationParameters.Bounds);
 
                 // Update sprite list
                 foreach (Sprite s in spriteList)
@@ -56,7 +66,7 @@ namespace Mendori.Models
                     s.Update(gameTime, Game.GraphicsDevice.PresentationParameters.Bounds);
 
                     // Check for collisions. Exit if found
-                    if (s.collisionRect.Intersects(player.collisionRect))
+                    if (s.collisionRect.Intersects(pj.collisionRect))
                     {
                         gameOver = true;
                     }
@@ -72,7 +82,7 @@ namespace Mendori.Models
             spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend);
 
             // Draw Player
-            player.Draw(gameTime, spriteBatch);
+            pj.Draw(gameTime, spriteBatch);
 
             // Draw sprite list
             foreach (Sprite s in spriteList)

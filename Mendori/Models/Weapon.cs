@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Mendori.Models
 {
-    internal class Weapon : AutomatedSprite
+    public class Weapon : AutomatedSprite
     {
         public int Damage { get; set; }
 

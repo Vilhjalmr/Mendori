@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Mendori.Models
 {
-    internal class AutomatedSprite : Sprite
+    public class AutomatedSprite : Sprite
     {
         #region Constructors
         public AutomatedSprite(Texture2D textureImage, Vector2 position,
