@@ -36,10 +36,10 @@ namespace Mendori.Models
             //    new Point(0, 0), new Point(1, 1), new Vector2(6, 6));
 
             pj = new Spaceship(
-                Game.Content.Load<Texture2D>("Img/player1"),
+                Game.Content.Load<Texture2D>("Img/player1_"),
                 new Vector2(Game.GraphicsDevice.PresentationParameters.BackBufferWidth / 2, Game.GraphicsDevice.PresentationParameters.BackBufferHeight / 10 *9),
-                new Point(128, 128), 5,
-                new Point(0, 0), new Point(1, 1), new Vector2(6, 6),
+                new Point(64, 64), 5,
+                Point.Zero, new Point(1, 1), new Vector2(6, 6),
                 Polarity.White,
                 Game.Content.Load<Texture2D>("Img/blueLaser")
                 );
@@ -48,7 +48,7 @@ namespace Mendori.Models
                 Game.Content.Load<Texture2D>("Img/threerings"),
                 new Vector2(150, 150), 
                 new Point(75, 75), 10,
-                new Point(0, 0), new Point(6, 8), Vector2.Zero));
+                Point.Zero, new Point(6, 8), Vector2.Zero));
 
             base.LoadContent();
         }

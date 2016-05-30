@@ -16,6 +16,7 @@ namespace Mendori.Models
 
         #endregion
 
+
         #region Properties
         Texture2D LaserTexture { get; set; }
         Polarity Polarity { get; set; }
@@ -23,21 +24,65 @@ namespace Mendori.Models
 
 
         #region Constructors
+
+        /// <summary>
+        /// Adds Polarity and LaserTexture to base constructor.
+        /// Polarity is White by default.
+        /// </summary>
+        /// <param name="textureImage"></param>
+        /// <param name="position"></param>
+        /// <param name="frameSize"></param>
+        /// <param name="collisionOffset"></param>
+        /// <param name="currentFrame"></param>
+        /// <param name="sheetSize"></param>
+        /// <param name="speed"></param>
+        /// <param name="laserTexture"></param>
+        public Spaceship(Texture2D textureImage, Vector2 position,
+           Point frameSize, int collisionOffset, Point currentFrame,
+           Point sheetSize, Vector2 speed, Texture2D laserTexture)
+           : base(textureImage, position, frameSize, collisionOffset,
+                 currentFrame, sheetSize, speed)
+        {
+            Polarity = Polarity.White;
+            LaserTexture = LaserTexture;
+        }
+
+        /// <summary>
+        /// Adds Polarity and LaserTexture to base constructor.
+        /// </summary>
+        /// <param name="textureImage"></param>
+        /// <param name="position"></param>
+        /// <param name="frameSize"></param>
+        /// <param name="collisionOffset"></param>
+        /// <param name="currentFrame"></param>
+        /// <param name="sheetSize"></param>
+        /// <param name="speed"></param>
+        /// <param name="polarity"></param>
+        /// <param name="laserTexture"></param>
         public Spaceship(Texture2D textureImage, Vector2 position,
             Point frameSize, int collisionOffset, Point currentFrame,
             Point sheetSize, Vector2 speed, Polarity polarity, Texture2D laserTexture)
             : base(textureImage, position, frameSize, collisionOffset,
                   currentFrame, sheetSize, speed)
         {
-            // TODO: add polarity and lasertexture
             Polarity = polarity;
             LaserTexture = laserTexture;
         }
 
+       
+
         #endregion
+
 
         #region Methods
 
+        /// <summary>
+        /// Overrides parent Update. Responds to Keyboard.GetState, 
+        /// and calls update of each LaserShot.
+        /// Might need to change.
+        /// </summary>
+        /// <param name="gameTime"></param>
+        /// <param name="clientBounds"></param>
         public override void Update(GameTime gameTime, Rectangle clientBounds)
         {
             position += direction;
@@ -63,6 +108,12 @@ namespace Mendori.Models
             base.Update(gameTime, clientBounds);
         }
 
+        /// <summary>
+        /// Calls draw for every laser shot, 
+        /// then calls its own base draw (from UserControlledSprite)
+        /// </summary>
+        /// <param name="gameTime"></param>
+        /// <param name="spriteBatch"></param>
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
             foreach (LaserShot LS in Shots)
@@ -73,8 +124,13 @@ namespace Mendori.Models
             base.Draw(gameTime, spriteBatch);
         }
 
+        /// <summary>
+        /// Creates two instances of LaserShot. One at each side of the Spaceship.
+        /// Currently no animation
+        /// </summary>
         public void ShootLaser()
         {
+            // TODO: limit number of shots
             Vector2 posLeftLS = new Vector2(
                 (this.position.X + (this.textureImage.Bounds.Width / 2) - (this.textureImage.Bounds.Width / 3) - (this.LaserTexture.Bounds.Width / 2)),
                 (this.position.Y - (this.textureImage.Bounds.Height / 3))
@@ -84,20 +140,27 @@ namespace Mendori.Models
                 (this.position.Y - (this.textureImage.Bounds.Height / 3))
                 );
 
-            LaserShot LeftLS = new LaserShot(this.LaserTexture, posLeftLS, new Point(64, 64), 10, new Point(0, 0), new Point(1, 1), new Vector2(0, 12));
-            LaserShot RightLS = new LaserShot(this.LaserTexture, posRightLS, new Point(64, 64), 10, new Point(0, 0), new Point(1, 1), new Vector2(0, 12));
+            LaserShot LeftLS = new LaserShot(this.LaserTexture, posLeftLS, new Point(64, 64), 10, new Point(0, 0), new Point(1, 1), new Vector2(0, 15));
+            LaserShot RightLS = new LaserShot(this.LaserTexture, posRightLS, new Point(64, 64), 10, new Point(0, 0), new Point(1, 1), new Vector2(0, 15));
             Shots.Add(LeftLS);
             Shots.Add(RightLS);
         }
         
+        /// <summary>
+        /// Not yet implemented
+        /// </summary>
         public void ShootMissile()
         {
-            
+            // TODO: pour jerem.
+            throw new NotImplementedException();
         }
         
+        /// <summary>
+        /// Not yet implemented
+        /// </summary>
         public void Switchpolarity()
         {
-            
+            throw new NotImplementedException();
         }
 
         #endregion
