@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
@@ -69,12 +70,18 @@ namespace Mendori.Models
             LaserTexture = laserTexture;
         }
 
-       
+
 
         #endregion
 
-
+        // TODO : implement ShootMissile & SwitchPolarity
         #region Methods
+
+       
+        public override void LoadContent(ContentManager content)
+        {
+            this.textureImage = content.Load<Texture2D>("Img/player1_");
+        }
 
         /// <summary>
         /// Overrides parent Update. Responds to Keyboard.GetState, 
@@ -84,29 +91,29 @@ namespace Mendori.Models
         /// <param name="gameTime"></param>
         /// <param name="clientBounds"></param>
         public override void Update(GameTime gameTime, Rectangle clientBounds)
-        {
-            position += direction;
-
-            if (position.X < 0)
-                position.X = 0;
-            if (position.Y < 0)
-                position.Y = 0;
-            if (position.X > clientBounds.Width - frameSize.X)
-                position.X = clientBounds.Width - frameSize.X;
-            if (position.Y > clientBounds.Height - frameSize.Y)
-                position.Y = clientBounds.Height - frameSize.Y;
-
-
-            if (Keyboard.GetState().IsKeyDown(Keys.Space))
-                this.ShootLaser();
-
-            foreach (LaserShot LS in Shots)
             {
-                LS.Update(gameTime, clientBounds);
-            }
+                position += direction;
 
-            base.Update(gameTime, clientBounds);
-        }
+                if (position.X < 0)
+                    position.X = 0;
+                if (position.Y < 0)
+                    position.Y = 0;
+                if (position.X > clientBounds.Width - frameSize.X)
+                    position.X = clientBounds.Width - frameSize.X;
+                if (position.Y > clientBounds.Height - frameSize.Y)
+                    position.Y = clientBounds.Height - frameSize.Y;
+
+
+                if (Keyboard.GetState().IsKeyDown(Keys.Space))
+                    this.ShootLaser();
+
+                foreach (LaserShot LS in Shots)
+                {
+                    LS.Update(gameTime, clientBounds);
+                }
+
+                base.Update(gameTime, clientBounds);
+            }
 
         /// <summary>
         /// Calls draw for every laser shot, 
@@ -123,6 +130,8 @@ namespace Mendori.Models
 
             base.Draw(gameTime, spriteBatch);
         }
+
+        
 
         /// <summary>
         /// Creates two instances of LaserShot. One at each side of the Spaceship.
@@ -162,6 +171,9 @@ namespace Mendori.Models
         {
             throw new NotImplementedException();
         }
+
+
+            
 
         #endregion
     }

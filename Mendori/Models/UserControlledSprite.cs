@@ -13,6 +13,8 @@ namespace Mendori.Models
     {
         MouseState prevMouseState;
 
+        #region Constructors
+
         public UserControlledSprite(Texture2D textureImage, Vector2 position,
             Point frameSize, int collisionOffset, Point currentFrame,
             Point sheetSize, Vector2 speed)
@@ -26,6 +28,8 @@ namespace Mendori.Models
             : base(textureImage, position, frameSize, collisionOffset,
                   currentFrame, sheetSize, speed, millisecondsPerFrame)
         { }
+
+        #endregion
 
         public override Vector2 direction
         {
@@ -48,6 +52,8 @@ namespace Mendori.Models
                 return inputDirection * speed;
             }
         }
+
+        #region Methods
 
         public override void Update(GameTime gameTime, Rectangle clientBounds)
         {
@@ -76,6 +82,8 @@ namespace Mendori.Models
 
             base.Update(gameTime, clientBounds);
         }
+
+        #endregion
 
         // ADD OWN DRAW METHOD TO RESIZE?
     }

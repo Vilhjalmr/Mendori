@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Xna.Framework.Content;
 
 namespace Mendori.Models
 {
@@ -18,9 +19,14 @@ namespace Mendori.Models
             : base(textureImage, position, frameSize, collisionOffset,
                   currentFrame, sheetSize, speed)
         { }
-      
 
-       
+
+
+
+        public override void LoadContent(ContentManager content)
+        {
+            this.textureImage = content.Load<Texture2D>("Img/blueLaser");
+        }
 
         public override void Update(GameTime gameTime, Rectangle clientBounds)
         {

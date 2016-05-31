@@ -17,9 +17,10 @@ namespace Mendori.Models
         Spaceship pj;
         List<Sprite> spriteList = new List<Sprite>();
 
+        
+
         public SpriteManager(Game game) : base(game)
         { }
-
         public override void Initialize()
         {
             base.Initialize();
@@ -27,6 +28,8 @@ namespace Mendori.Models
 
         protected override void LoadContent()
         {
+            // TODO : ajouter la logique de déclaration de liste des objets et d'appel de chaque load content
+
             spriteBatch = new SpriteBatch(Game.GraphicsDevice);
 
             //player = new UserControlledSprite(
@@ -69,6 +72,11 @@ namespace Mendori.Models
                     if (s.collisionRect.Intersects(pj.collisionRect))
                     {
                         gameOver = true;
+                    }
+
+                    if (s.IsOutOfBounds(Game.Window.ClientBounds))
+                    {
+                        spriteList.Remove(s);
                     }
                 }
             }

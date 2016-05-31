@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -68,6 +69,34 @@ namespace Mendori.Models
 
 
         #region Methods
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="clientRect"></param>
+        /// <returns></returns>
+        public bool IsOutOfBounds(Rectangle clientRect)
+        {
+            if (position.X < -frameSize.X ||
+            position.X > clientRect.Width ||
+            position.Y < -frameSize.Y ||
+            position.Y > clientRect.Height)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public virtual void LoadContent(ContentManager content)
+        {
+            
+        }
+
+        /// <summary>
+        /// Animates the sprite using its timeSinceLastFrame, millisecondsPerFrame, currentFrame, and sheetSize fields
+        /// </summary>
+        /// <param name="gameTime">gameTime</param>
+        /// <param name="clientBounds">Window bounds, set in Game1.cs</param>
         public virtual void Update(GameTime gameTime, Rectangle clientBounds)
         {
             timeSinceLastFrame += gameTime.ElapsedGameTime.Milliseconds;
