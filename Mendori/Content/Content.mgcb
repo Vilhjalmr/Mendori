@@ -109,3 +109,9 @@
 /processorParam:TextureFormat=Color
 /build:Img/player1_.png
 
+#begin Audio/start.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Audio/start.wav
+
