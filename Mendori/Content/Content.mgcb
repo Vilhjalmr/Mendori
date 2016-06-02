@@ -115,3 +115,15 @@
 /processorParam:Quality=Best
 /build:Audio/start.wav
 
+#begin Audio/skullcollision.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Audio/skullcollision.wav
+
+#begin Audio/track.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Audio/track.wav
+
